@@ -7,3 +7,5 @@ func Sumar(numeros []int, canalResults chan int) {
 	}
 	canalResults <- suma
 }
+
+// create test for Sumar function
