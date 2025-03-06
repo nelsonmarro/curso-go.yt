@@ -8,4 +8,4 @@ func Sumar(numeros []int, canalResults chan int) {
 	canalResults <- suma
 }
 
-// create test for Sumar function
+// create test func for Sumar
