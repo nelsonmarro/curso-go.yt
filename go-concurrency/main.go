@@ -1,11 +1,5 @@
 package main
 
-import (
-	"fmt"
-
-	"github.com/nelsonmarro/go-concurrency/opconcurrentes"
-)
-
 // func saludar(nombre string) {
 // 	fmt.Printf("Hola, %s desde una goroutine!\n", nombre)
 // }
@@ -19,15 +13,15 @@ func main() {
 	numeros2 := []int{6, 7, 8, 9, 10}
 
 	// canal sin buffer
-	canalSumas := make(chan int)
+	// canalSumas := make(chan int)
+	canalRestas := make(chan int, 3)
 
 	// llamar a la funcion Sumar de manera concurrente
-	go opconcurrentes.Sumar(numeros1, canalSumas)
-	go opconcurrentes.Sumar(numeros2, canalSumas)
-
-	for suma := range canalSumas {
-		fmt.Printf("Suma: %d\n", suma)
-	}
-
+	// go opconcurrentes.Sumar(numeros1, canalSumas)
+	// go opconcurrentes.Sumar(numeros2, canalSumas)
+	//
+	// suma1 := <-canalSumas
+	// suma2 := <-canalSumas
+	//
 	// fmt.Printf("Suma 1: %d, Suma 2: %d, Suma Total: %d\n", suma1, suma2, suma1+suma2)
 }
