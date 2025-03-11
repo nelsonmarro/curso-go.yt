@@ -1,2 +1,0 @@
-Contenido del archivo notas: Hello Gophers!
-Segunda linea del archivo!!!

@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"io"
 	"os"
 )
 
@@ -72,4 +73,16 @@ func main() {
 
 	textoAppend := "\n--- Texto añadido (APPEND) ---\nLínea añadida.\n¡Append OK!\n"
 	fmt.Printf("\nAñadiendo texto (APPEND) a '%s':\n%s", nombreArchivo, textoAppend)
+
+	_, err = io.WriteString(archivoAppend, textoAppend)
+	if err != nil {
+		fmt.Println("Error al escribir el texto (APPEND):", err)
+	}
+
+	// Eliminar un archivo
+	err = os.Remove("notas.txt")
+	if err != nil {
+		fmt.Println("Error al eliminar el archivo:", err)
+	}
+	fmt.Printf("\nArchivo '%s' eliminado.\n", "notas.txt")
 }

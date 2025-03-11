@@ -1,3 +1,7 @@
 Texto inicial simplificado.
 Línea uno.
 Línea dos.
+
+--- Texto añadido (APPEND) ---
+Línea añadida.
+¡Append OK!
