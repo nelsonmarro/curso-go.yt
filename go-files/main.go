@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"os"
 )
@@ -44,4 +45,31 @@ func main() {
 	if err != nil {
 		fmt.Println("Error al escribir el texto:", err)
 	}
+
+	// abrir el archivo creado para leerlo
+	miarchivoLectura, err := os.Open(nombreArchivo)
+	if err != nil {
+		fmt.Println("Error al abrir el archivo:", err)
+	}
+	defer miarchivoLectura.Close()
+
+	fmt.Printf("\nContenido de '%s' (después de escritura inicial):\n", nombreArchivo)
+	escanerInicial := bufio.NewScanner(miarchivoLectura) // Escáner inicial
+	for escanerInicial.Scan() {                          // Leer líneas
+		linea := escanerInicial.Text() // Obtener línea
+		fmt.Printf("%s\n", linea)
+	}
+	if err := escanerInicial.Err(); err != nil { // Comprobar errores
+		fmt.Println("Error al leer después de escritura inicial:", escanerInicial.Err())
+	}
+
+	// Append para agregar más texto al archivo
+	archivoAppend, err := os.OpenFile(nombreArchivo, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0o644)
+	if err != nil {
+		fmt.Println("Error al abrir el archivo para append:", err)
+	}
+	defer archivoAppend.Close()
+
+	textoAppend := "\n--- Texto añadido (APPEND) ---\nLínea añadida.\n¡Append OK!\n"
+	fmt.Printf("\nAñadiendo texto (APPEND) a '%s':\n%s", nombreArchivo, textoAppend)
 }
