@@ -30,6 +30,20 @@ func CumplirAniosSinPunteros(persona Persona) {
 }
 
 func main() {
-	ana := &Persona{Nombre: "Ana", Edad: 25}
-	pablo := NewPersona("Pablo", 30)
+	ana := Persona{Nombre: "Ana", Edad: 25}
+	// pablo := NewPersona("Pablo", 30)
+	//
+	// fmt.Println("--- Celebrar cumpleaños de Pablo USANDO PUNTEROS ---")
+	// fmt.Printf("Edad de %s antes del metodo CumplirAniosPunteros: %d\n", pablo.Nombre, pablo.Edad)
+	//
+	// pablo.CumplirAniosPunteros()
+	//
+	// fmt.Printf("Edad de %s despues del metodo CumplirAniosPunteros: %d\n", pablo.Nombre, pablo.Edad)
+
+	fmt.Println("--- Celebrar cumpleaños de Ana SIN PUNTEROS ---")
+	fmt.Printf("Edad de %s antes del metodo CumplirAniosSinPunteros: %d\n", ana.Nombre, ana.Edad)
+
+	CumplirAniosSinPunteros(ana)
+
+	fmt.Printf("Edad de %s despues del metodo CumplirAniosSinPunteros: %d\n", ana.Nombre, ana.Edad)
 }
